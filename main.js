@@ -11,7 +11,7 @@ const personalInfo = {
   email: "jjanselmoo@gmail.com",
   github: "https://github.com/Jacanselmo",
   linkedin: "https://www.linkedin.com/in/jjanselmo",
-  resumeUrl: "#",
+  gmailComposeUrl: "https://mail.google.com/mail/?view=cm&fs=1&to=jjanselmoo@gmail.com",
 };
 
 const interests = [
