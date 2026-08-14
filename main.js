@@ -5,10 +5,12 @@
 
 const personalInfo = {
   name: "Jacob Josh Tubo",
+  firstName: "Jacob",
   title: "Computer Engineer",
+  tagline: "Hardware • Software • IT",
   email: "jjanselmoo@gmail.com",
-  github: "https://github.com/Yakov-Integrals",
-  linkedin: "https://www.linkedin.com/in/jjanselmoo",
+  github: "https://github.com/Jacanselmo",
+  linkedin: "https://www.linkedin.com/in/jjanselmo",
   resumeUrl: "#",
 };
 
@@ -20,7 +22,6 @@ const interests = [
   "Robotics",
   "Technical Support",
   "Systems Integration",
-  "Edge AI & IoT"
 ];
 
 const skills = [
@@ -41,7 +42,7 @@ const skills = [
     title: "Software & Development",
     icon: "code",
     description:
-      "Developing applications and software systems using modern programming languages, frameworks, databases, and APIs.",
+      "Developing applications and software systems using programming languages, frameworks, databases, and APIs.",
     tags: [
       "Python", "Java", "JavaScript", "HTML", "CSS", "React",
       "React Native", "Expo", "Supabase", "Firebase", "MySQL",
@@ -53,7 +54,7 @@ const skills = [
     title: "Networking, Robotics & Systems",
     icon: "network",
     description:
-      "Working with computer networks, robotics platforms, computer vision, and fully integrated cyber-physical systems.",
+      "Working with networks, robotics platforms, computer vision, and integrated systems.",
     tags: [
       "Network Troubleshooting", "IP Configuration", "Routers", "Switches",
       "Ethernet / RJ45", "CCTV", "DVR", "Hikvision", "Fiber Optics",
@@ -79,13 +80,13 @@ const certifications = [
   {
     id: 3,
     title: "Analyzing IoT Data in Python",
-    provider: "DataCamp / Python",
+    provider: "",
     image: "certificates/iot-data-python.png",
   },
   {
     id: 4,
     title: "Introduction to Cybersecurity",
-    provider: "Cisco Networking Academy",
+    provider: "",
     image: "certificates/intro-cybersecurity.png",
   },
   {
@@ -102,7 +103,7 @@ const certifications = [
   },
 ];
 
-const topologyNodes = [
+const nodes = [
   { id: "hw", label: "HW", name: "Hardware", desc: "ESP32, Sensors, SPI, I²C, Prototyping", cx: 120, cy: 160, r: 24, connections: ["sw", "rob", "sys"] },
   { id: "sw", label: "SW", name: "Software", desc: "Python, C++, Java, JS, APIs, Git", cx: 240, cy: 120, r: 28, connections: ["hw", "net", "sys"] },
   { id: "net", label: "NET", name: "Networking", desc: "IP Config, Switches, CCTV, Fiber", cx: 360, cy: 160, r: 24, connections: ["sw", "iot", "sys"] },
@@ -112,27 +113,27 @@ const topologyNodes = [
   { id: "int", label: "INT", name: "Integration", desc: "Hardware + Software + Network", cx: 240, cy: 360, r: 24, connections: ["rob", "iot", "sys"] },
 ];
 
-const topologyLines = [
-  { from: "hw", to: "sw", x1: 120, y1: 160, x2: 240, y2: 120 },
-  { from: "sw", to: "net", x1: 240, y1: 120, x2: 360, y2: 160 },
-  { from: "hw", to: "rob", x1: 120, y1: 160, x2: 160, y2: 280 },
-  { from: "net", to: "iot", x1: 360, y1: 160, x2: 320, y2: 280 },
-  { from: "rob", to: "int", x1: 160, y1: 280, x2: 240, y2: 360 },
-  { from: "iot", to: "int", x1: 320, y1: 280, x2: 240, y2: 360 },
-  { from: "sw", to: "sys", x1: 240, y1: 120, x2: 240, y2: 240 },
-  { from: "rob", to: "iot", x1: 160, y1: 280, x2: 320, y2: 280 },
-  { from: "hw", to: "sys", x1: 120, y1: 160, x2: 240, y2: 240 },
-  { from: "net", to: "sys", x1: 360, y1: 160, x2: 240, y2: 240 },
-  { from: "int", to: "sys", x1: 240, y1: 360, x2: 240, y2: 240 },
+const lines = [
+  { id: "l1", from: "hw", to: "sw", x1: 120, y1: 160, x2: 240, y2: 120 },
+  { id: "l2", from: "sw", to: "net", x1: 240, y1: 120, x2: 360, y2: 160 },
+  { id: "l3", from: "hw", to: "rob", x1: 120, y1: 160, x2: 160, y2: 280 },
+  { id: "l4", from: "net", to: "iot", x1: 360, y1: 160, x2: 320, y2: 280 },
+  { id: "l5", from: "rob", to: "int", x1: 160, y1: 280, x2: 240, y2: 360 },
+  { id: "l6", from: "iot", to: "int", x1: 320, y1: 280, x2: 240, y2: 360 },
+  { id: "l7", from: "sw", to: "sys", x1: 240, y1: 120, x2: 240, y2: 240 },
+  { id: "l8", from: "rob", to: "iot", x1: 160, y1: 280, x2: 320, y2: 280 },
+  { id: "l9", from: "hw", to: "sys", x1: 120, y1: 160, x2: 240, y2: 240 },
+  { id: "l10", from: "net", to: "sys", x1: 360, y1: 160, x2: 240, y2: 240 },
+  { id: "l11", from: "int", to: "sys", x1: 240, y1: 360, x2: 240, y2: 240 },
 ];
 
 function getIconSvg(name) {
   if (name === "cpu") {
-    return `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></svg>`;
+    return `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></svg>`;
   } else if (name === "code") {
-    return `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`;
+    return `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`;
   } else if (name === "network") {
-    return `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="16" y="16" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="9" y="2" width="6" height="6" rx="1"/><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"/><path d="M12 12V8"/></svg>`;
+    return `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="16" y="16" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="9" y="2" width="6" height="6" rx="1"/><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"/><path d="M12 12V8"/></svg>`;
   }
   return "";
 }
@@ -146,7 +147,7 @@ function renderInterests() {
     .join("");
 }
 
-// 2. Render Skills
+// 2. Render Skills with 3D tilt
 function renderSkills() {
   const grid = document.getElementById("skills-grid");
   if (!grid) return;
@@ -168,7 +169,7 @@ function renderSkills() {
     .join("");
 
   document.querySelectorAll(".skill-card").forEach((card) => {
-    attach3DTilt(card, 7, 1.015);
+    attach3DTilt(card, 6, 1.015);
   });
 }
 
@@ -182,19 +183,13 @@ function renderCertifications() {
       (c) => `
       <div class="cert-card fade-up" id="cert-${c.id}" role="button" tabindex="0" aria-label="View certificate: ${c.title}">
         <div class="cert-card__glare"></div>
-        <div class="cert-card__image-wrap">
-          <img class="cert-card__image" src="${c.image}" alt="${c.title}" loading="lazy" />
-          <div class="cert-card__overlay">
-            <span class="cert-card__badge">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
-              View Full Certificate
-            </span>
-          </div>
+        <div class="cert-card__overlay-hint">
+          <span class="cert-card__hint-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+            View Certificate
+          </span>
         </div>
-        <div class="cert-card__meta">
-          <span class="cert-card__provider">${c.provider || "Certified"}</span>
-          <h3 class="cert-card__title">${c.title}</h3>
-        </div>
+        <img class="cert-card__image" src="${c.image}" alt="${c.title}" loading="lazy" />
       </div>
     `
     )
@@ -209,134 +204,216 @@ function renderCertifications() {
         openLightbox(cert);
       }
     });
-    attach3DTilt(card, 8, 1.02);
+    attach3DTilt(card, 7, 1.02);
   });
 }
 
-// 4. Render Topology Graph
+// 4. Render Interactive SVG Topology Graph (Matching Previous Portfolio)
 function renderTopology() {
   const svg = document.getElementById("hero-svg");
   const tooltip = document.getElementById("hero-tooltip");
   if (!svg || !tooltip) return;
 
-  let activeNode = null;
-
-  function update() {
-    let linesHtml = "";
-    topologyLines.forEach((line) => {
-      const isConnected = activeNode && (line.from === activeNode || line.to === activeNode);
-      linesHtml += `
-        <g>
-          <line
-            x1="${line.x1}" y1="${line.y1}" x2="${line.x2}" y2="${line.y2}"
-            stroke="#146EF5"
-            stroke-width="${isConnected ? 2.5 : 1.2}"
-            opacity="${isConnected ? 0.9 : 0.2}"
-            style="transition: all 0.3s ease"
-          />
-          <line
-            x1="${line.x1}" y1="${line.y1}" x2="${line.x2}" y2="${line.y2}"
-            stroke="#146EF5"
-            stroke-width="2"
-            stroke-dasharray="6 18"
-            class="pulse-signal-line"
-            opacity="${isConnected ? 1 : 0.4}"
-          />
-        </g>
-      `;
-    });
-
-    let nodesHtml = "";
-    topologyNodes.forEach((node) => {
-      const isActive = activeNode === node.id;
-      const activeData = topologyNodes.find((n) => n.id === activeNode);
-      const isConnected = activeData && (activeData.id === node.id || activeData.connections.includes(node.id));
-
-      nodesHtml += `
-        <g class="hero__node-group" data-id="${node.id}" style="cursor: pointer;">
-          ${
-            isActive
-              ? `<circle cx="${node.cx}" cy="${node.cy}" r="${node.r + 8}" fill="none" stroke="#146EF5" stroke-width="1.5" class="hero__node-pulse" />`
-              : ""
-          }
-          <circle
-            cx="${node.cx}" cy="${node.cy}" r="${node.r}"
-            fill="${isActive ? "#146EF5" : "#F8FAFC"}"
-            stroke="#146EF5"
-            stroke-width="${isActive ? 2.5 : isConnected ? 2 : 1.5}"
-            opacity="${activeNode && !isConnected ? 0.4 : 1}"
-            style="transition: all 0.25s ease;"
-          />
-          <text
-            x="${node.cx}" y="${node.cy + (node.isCore ? -2 : 3)}"
-            text-anchor="middle"
-            font-size="${node.isCore ? 8 : 7.5}"
-            font-weight="700"
-            fill="${isActive ? "#FFFFFF" : "#146EF5"}"
-            font-family="Inter, sans-serif"
-            style="pointer-events: none; transition: fill 0.25s ease;"
-          >
-            ${node.label}
-          </text>
-          ${
-            node.isCore
-              ? `<text x="${node.cx}" y="${node.cy + 9}" text-anchor="middle" font-size="5.5" font-weight="600" fill="${isActive ? "#E8F0FE" : "#64748B"}" font-family="Inter, sans-serif" style="pointer-events: none;">CORE</text>`
-              : ""
-          }
-          <text
-            x="${node.cx}" y="${node.cy + node.r + 14}"
-            text-anchor="middle"
-            font-size="9"
-            font-weight="${isActive ? "700" : "500"}"
-            fill="${isActive ? "#146EF5" : "#64748B"}"
-            font-family="Inter, sans-serif"
-            style="transition: fill 0.25s ease; pointer-events: none;"
-          >
-            ${node.name}
-          </text>
-        </g>
-      `;
-    });
-
-    svg.innerHTML = `
-      <defs>
-        <pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse">
-          <circle cx="18" cy="18" r="0.8" fill="#CBD5E1" />
-        </pattern>
-      </defs>
-      <rect width="480" height="480" fill="url(#grid)" rx="16" opacity="0.65" />
-      ${linesHtml}
-      ${nodesHtml}
+  // Render static SVG base
+  let linesHtml = "";
+  lines.forEach((line) => {
+    linesHtml += `
+      <g id="line-group-${line.id}">
+        <line
+          id="line-base-${line.id}"
+          x1="${line.x1}" y1="${line.y1}" x2="${line.x2}" y2="${line.y2}"
+          stroke="#146EF5"
+          stroke-width="1.2"
+          opacity="0.18"
+          style="transition: stroke-width 0.3s ease, opacity 0.3s ease;"
+        />
+        <line
+          id="line-pulse-${line.id}"
+          x1="${line.x1}" y1="${line.y1}" x2="${line.x2}" y2="${line.y2}"
+          stroke="#146EF5"
+          stroke-width="2"
+          stroke-dasharray="6 18"
+          class="pulse-signal-line"
+          opacity="0.4"
+          style="transition: opacity 0.3s ease;"
+        />
+      </g>
     `;
+  });
 
-    svg.querySelectorAll(".hero__node-group").forEach((group) => {
-      const id = group.getAttribute("data-id");
-      group.addEventListener("mouseenter", () => {
-        activeNode = id;
-        const nodeData = topologyNodes.find((n) => n.id === id);
-        if (nodeData) {
-          tooltip.classList.add("active");
-          tooltip.innerHTML = `
-            <div class="hero__tooltip-title">${nodeData.name}</div>
-            <div class="hero__tooltip-desc">${nodeData.desc}</div>
-          `;
+  let nodesHtml = "";
+  nodes.forEach((node) => {
+    nodesHtml += `
+      <g class="hero__node-group" id="node-group-${node.id}" data-id="${node.id}" style="cursor: pointer;">
+        <circle
+          id="node-pulse-${node.id}"
+          cx="${node.cx}" cy="${node.cy}" r="${node.r + 8}"
+          fill="none" stroke="#146EF5" stroke-width="1.5"
+          class="hero__node-pulse"
+          style="display: none;"
+        />
+        <circle
+          id="node-circle-${node.id}"
+          cx="${node.cx}" cy="${node.cy}" r="${node.r}"
+          fill="#F7FAFF"
+          stroke="#146EF5"
+          stroke-width="1.5"
+          filter="url(#glow)"
+          style="transition: fill 0.25s ease, stroke-width 0.25s ease, opacity 0.25s ease;"
+        />
+        <text
+          id="node-label-${node.id}"
+          x="${node.cx}" y="${node.cy + (node.isCore ? -2 : 3)}"
+          text-anchor="middle"
+          font-size="${node.isCore ? 8 : 7.5}"
+          font-weight="700"
+          fill="#146EF5"
+          font-family="Inter, sans-serif"
+          style="pointer-events: none; transition: fill 0.25s ease;"
+        >
+          ${node.label}
+        </text>
+        ${
+          node.isCore
+            ? `<text id="node-core-label" x="${node.cx}" y="${node.cy + 9}" text-anchor="middle" font-size="5.5" font-weight="600" fill="#667085" font-family="Inter, sans-serif" style="pointer-events: none; transition: fill 0.25s ease;">CORE</text>`
+            : ""
         }
-        update();
+        <text
+          id="node-name-${node.id}"
+          x="${node.cx}" y="${node.cy + node.r + 14}"
+          text-anchor="middle"
+          font-size="9"
+          font-weight="500"
+          fill="#667085"
+          font-family="Inter, sans-serif"
+          style="transition: fill 0.25s ease, font-weight 0.25s ease; pointer-events: none;"
+        >
+          ${node.name}
+        </text>
+      </g>
+    `;
+  });
+
+  svg.innerHTML = `
+    <defs>
+      <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+        <circle cx="20" cy="20" r="0.8" fill="#D0D5DD" />
+      </pattern>
+      <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+        <feGaussianBlur stdDeviation="3" result="blur" />
+        <feComposite in="SourceGraphic" in2="blur" operator="over" />
+      </filter>
+    </defs>
+    <rect width="480" height="480" fill="url(#grid)" rx="20" opacity="0.6" />
+    ${linesHtml}
+    ${nodesHtml}
+  `;
+
+  // Attach hover events directly modifying styles
+  svg.querySelectorAll(".hero__node-group").forEach((group) => {
+    const id = group.getAttribute("data-id");
+    const nodeData = nodes.find((n) => n.id === id);
+
+    group.addEventListener("mouseenter", () => {
+      // 1. Update tooltip
+      tooltip.classList.add("active");
+      tooltip.innerHTML = `
+        <div class="hero__tooltip-header">
+          <span class="hero__tooltip-badge">Connected Node</span>
+          <strong class="hero__tooltip-title">${nodeData.name}</strong>
+        </div>
+        <p class="hero__tooltip-desc">${nodeData.desc}</p>
+      `;
+
+      // 2. Highlight active and connected nodes
+      nodes.forEach((n) => {
+        const isHovered = n.id === id;
+        const isConnected = isHovered || nodeData.connections.includes(n.id);
+        const circle = document.getElementById(`node-circle-${n.id}`);
+        const pulse = document.getElementById(`node-pulse-${n.id}`);
+        const label = document.getElementById(`node-label-${n.id}`);
+        const name = document.getElementById(`node-name-${n.id}`);
+
+        if (pulse) pulse.style.display = isHovered ? "block" : "none";
+
+        if (isHovered) {
+          circle.setAttribute("fill", "#146EF5");
+          circle.setAttribute("stroke-width", "2.5");
+          circle.style.opacity = "1";
+          label.setAttribute("fill", "#FFFFFF");
+          name.setAttribute("fill", "#146EF5");
+          name.setAttribute("font-weight", "700");
+        } else if (isConnected) {
+          circle.setAttribute("fill", "#F7FAFF");
+          circle.setAttribute("stroke-width", "2");
+          circle.style.opacity = "1";
+          label.setAttribute("fill", "#146EF5");
+          name.setAttribute("fill", "#146EF5");
+          name.setAttribute("font-weight", "600");
+        } else {
+          circle.setAttribute("fill", "#F7FAFF");
+          circle.setAttribute("stroke-width", "1.5");
+          circle.style.opacity = "0.4";
+          label.setAttribute("fill", "#146EF5");
+          name.setAttribute("fill", "#667085");
+          name.setAttribute("font-weight", "500");
+        }
       });
-      group.addEventListener("mouseleave", () => {
-        activeNode = null;
-        tooltip.classList.remove("active");
-        tooltip.innerHTML = `<span class="hero__tooltip-hint">Hover over nodes to explore systems connectivity</span>`;
-        update();
+
+      // 3. Highlight lines
+      lines.forEach((l) => {
+        const isLineConnected = l.from === id || l.to === id;
+        const baseLine = document.getElementById(`line-base-${l.id}`);
+        const pulseLine = document.getElementById(`line-pulse-${l.id}`);
+        if (baseLine) {
+          baseLine.setAttribute("stroke-width", isLineConnected ? "2.5" : "1.2");
+          baseLine.setAttribute("opacity", isLineConnected ? "0.9" : "0.18");
+        }
+        if (pulseLine) {
+          pulseLine.setAttribute("opacity", isLineConnected ? "1" : "0.4");
+        }
       });
     });
-  }
 
-  update();
+    group.addEventListener("mouseleave", () => {
+      // 1. Reset tooltip
+      tooltip.classList.remove("active");
+      tooltip.innerHTML = `<span class="hero__tooltip-hint">Hover over nodes to explore systems connectivity</span>`;
+
+      // 2. Reset nodes
+      nodes.forEach((n) => {
+        const circle = document.getElementById(`node-circle-${n.id}`);
+        const pulse = document.getElementById(`node-pulse-${n.id}`);
+        const label = document.getElementById(`node-label-${n.id}`);
+        const name = document.getElementById(`node-name-${n.id}`);
+
+        if (pulse) pulse.style.display = "none";
+        circle.setAttribute("fill", "#F7FAFF");
+        circle.setAttribute("stroke-width", "1.5");
+        circle.style.opacity = "1";
+        label.setAttribute("fill", "#146EF5");
+        name.setAttribute("fill", "#667085");
+        name.setAttribute("font-weight", "500");
+      });
+
+      // 3. Reset lines
+      lines.forEach((l) => {
+        const baseLine = document.getElementById(`line-base-${l.id}`);
+        const pulseLine = document.getElementById(`line-pulse-${l.id}`);
+        if (baseLine) {
+          baseLine.setAttribute("stroke-width", "1.2");
+          baseLine.setAttribute("opacity", "0.18");
+        }
+        if (pulseLine) {
+          pulseLine.setAttribute("opacity", "0.4");
+        }
+      });
+    });
+  });
 }
 
 // 5. 3D Tilt
-function attach3DTilt(element, maxTilt = 8, scale = 1.02) {
+function attach3DTilt(element, maxTilt = 7, scale = 1.02) {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
   const glare = element.querySelector(".cert-card__glare, .skill-card__glare");
@@ -358,7 +435,7 @@ function attach3DTilt(element, maxTilt = 8, scale = 1.02) {
     if (glare) {
       const glareX = (x / rect.width) * 100;
       const glareY = (y / rect.height) * 100;
-      glare.style.opacity = "0.2";
+      glare.style.opacity = "0.15";
       glare.style.background = `radial-gradient(circle at ${glareX.toFixed(1)}% ${glareY.toFixed(1)}%, rgba(20, 110, 245, 0.4) 0%, rgba(255, 255, 255, 0) 70%)`;
       glare.style.transition = "opacity 0.2s ease-out";
     }
@@ -366,7 +443,7 @@ function attach3DTilt(element, maxTilt = 8, scale = 1.02) {
 
   element.addEventListener("mouseleave", () => {
     element.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)";
-    element.style.transition = "transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)";
+    element.style.transition = "transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)";
     if (glare) {
       glare.style.opacity = "0";
       glare.style.transition = "opacity 0.4s ease";
@@ -385,7 +462,7 @@ function openLightbox(cert) {
   if (!lightbox || !lightboxImage) return;
   lightboxImage.src = cert.image;
   lightboxImage.alt = cert.title;
-  lightboxCaption.textContent = `${cert.provider ? cert.provider + ' — ' : ''}${cert.title}`;
+  lightboxCaption.textContent = cert.title;
   lightbox.classList.add("active");
   document.body.style.overflow = "hidden";
 }
@@ -454,16 +531,17 @@ function initNavigation() {
   window.addEventListener(
     "scroll",
     () => {
-      const scrollPos = window.scrollY + 140;
+      const scrollPos = window.scrollY + 120;
       const sections = ["about", "skills", "certifications", "contact"];
 
       let current = "";
-      sections.forEach((id) => {
-        const sec = document.getElementById(id);
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const sec = document.getElementById(sections[i]);
         if (sec && sec.offsetTop <= scrollPos) {
-          current = id;
+          current = sections[i];
+          break;
         }
-      });
+      }
 
       navLinks.forEach((link) => {
         if (link.getAttribute("data-nav") === current) {
